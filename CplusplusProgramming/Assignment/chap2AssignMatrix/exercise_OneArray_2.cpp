@@ -8,8 +8,6 @@ C++ 2�� ������ 2���� �迭�� 1���� �迭�
 #include <stdlib.h>
 #include "time.h"
 
-
-
 #define MaxCounts 30
 #define AROWS 3
 #define ACOLS 4
@@ -27,6 +25,7 @@ int * multiplyMatrix(int *, int, int, int*, int, int,int *, int, int);//c = a * 
 bool freeMatrix(int *, int, int);
 int main()
 {
+    
     srand(time(NULL));
   
     int* a, * a1, * a2, * a3, * b, * c, * d;
