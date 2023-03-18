@@ -1,5 +1,5 @@
-//2ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
-//C++ 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
+//2Â÷¿ø ¹è¿­¿¡ ´ëÇÑ Çà·Ä ´õÇÏ±â
+//C++ 1Â÷ °úÁ¦·Î ¹èÆ÷ 
 #include <stdio.h>
 #include <stdlib.h>
 #include "time.h"
@@ -9,13 +9,13 @@
 #define BCOLS 5
 #define CROWS 3
 #define CCOLS 5
-//int getMatrix(int[][COLS], int);//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ Ã³ï¿½ï¿½ - pointerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½
+//int getMatrix(int[][COLS], int);//³­¼ö »ý¼ºÇÏ¿© Ã³¸® - pointer¸¸ »ç¿ëÇÏ¿© ±¸Çö
 bool showMatrix(int(*)[COLS], int);
-bool showMatrixB(int(*arr)[BCOLS], int rows);
-bool showMatrixC(int(*arr)[CCOLS], int rows);
+bool showMatrixB(int(*)[BCOLS], int);
+bool showMatrixC(int(*)[CCOLS], int);
 bool addMatrix(int(*)[COLS], int, int(*)[COLS], int, int(*)[COLS], int);
-bool getMatrixA(int(*arr)[COLS], int rows);
-bool getMatrixB(int(*arr)[BCOLS], int rows);
+bool getMatrixA(int(*)[COLS], int);
+bool getMatrixB(int(*)[BCOLS], int);
 bool multiplyMatrix(int(*)[COLS], int, int(*)[BCOLS], int, int(*)[CCOLS], int);
 int main()
 {
@@ -85,7 +85,7 @@ bool showMatrix(int(*arr)[COLS], int rows) {
 
 bool showMatrixB(int(*arr)[BCOLS], int rows) {
     for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < COLS; j++) {
+        for (int j = 0; j < BCOLS; j++) {
             printf("%d ", *(*(arr + i) + j));
         }
         printf("\n");
@@ -117,16 +117,16 @@ bool addMatrix(int(*arr1)[COLS], int row1, int(*arr2)[COLS], int row2, int(*arr3
 }
 
 bool multiplyMatrix(int(*arr1)[COLS], int row1, int(*arr2)[BCOLS], int row2, int(*arr3)[CCOLS], int row3) {
-    for (int x = 0; x < row3; x++) { //initialized arr3 because without this, the result of arr3 is soooooo weird. why????
-        for (int y = 0; y < CCOLS; y++) {
-            *(*(arr3 + x) + y) = 0;
+    for (int cRow = 0; cRow < row3; cRow++) { //arr3ÀÇ °¢ Ç×¸ñÀÇ °ªµéÀ» 0À¸·Î ÃÊ±âÈ­
+        for (int cCol = 0; cCol < CCOLS; cCol++) {
+            *(*(arr3 + cRow) + cCol) = 0;
         }
     }
 
-    for (int x = 0; x < row3; x++) { //ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-        for (int y = 0; y < CCOLS; y++) {
+    for (int cRow = 0; cRow < row3; cRow++) { //Çà·Ä °ö¼À ±¸Çö
+        for (int cCol = 0; cCol < CCOLS; cCol++) {
             for (int i = 0; i < COLS; i++) {
-                *(*(arr3 + x) + y) += *(*(arr1 + x) + i) * *(*(arr2 + i) + y);
+                *(*(arr3 + cRow) + cCol) += *(*(arr1 + cRow) + i) * *(*(arr2 + i) + cCol);
             }
         }
     }
