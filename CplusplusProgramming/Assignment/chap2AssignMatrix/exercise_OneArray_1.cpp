@@ -1,5 +1,5 @@
-//2Â÷¿ø ¹è¿­¿¡ ´ëÇÑ Çà·Ä ´õÇÏ±â
-//C++ 1Â÷ °úÁ¦·Î ¹èÆ÷ 
+//2ì°¨ì› ë°°ì—´ì— ëŒ€í•œ í–‰ë ¬ ë”í•˜ê¸°
+//C++ 1ì°¨ ê³¼ì œë¡œ ë°°í¬ 
 #include <stdio.h>
 #include <stdlib.h>
 #include "time.h"
@@ -9,29 +9,28 @@
 #define BCOLS 5
 #define CROWS 3
 #define CCOLS 5
-//int getMatrix(int[][COLS], int);//³­¼ö »ı¼ºÇÏ¿© Ã³¸® - pointer¸¸ »ç¿ëÇÏ¿© ±¸Çö
-bool showMatrix(int(*)[COLS], int);
+//int getMatrix(int[][COLS], int);//ë‚œìˆ˜ ìƒì„±í•˜ì—¬ ì²˜ë¦¬ - pointerë§Œ ì‚¬ìš©í•˜ì—¬ êµ¬í˜„
+bool showMatrixA(int(*)[COLS], int);
 bool showMatrixB(int(*)[BCOLS], int);
 bool showMatrixC(int(*)[CCOLS], int);
 bool addMatrix(int(*)[COLS], int, int(*)[COLS], int, int(*)[COLS], int);
 bool getMatrixA(int(*)[COLS], int);
 bool getMatrixB(int(*)[BCOLS], int);
 bool multiplyMatrix(int(*)[COLS], int, int(*)[BCOLS], int, int(*)[CCOLS], int);
-int main()
-{
+int main() {
     srand(time(NULL));
     int a[ROWS][COLS]; int a1[ROWS][COLS]; int a2[ROWS][COLS];
     int b[BROWS][BCOLS];
     int c[CROWS][CCOLS];
 
     getMatrixA(a, ROWS);
-    showMatrix(a, ROWS);
+    showMatrixA(a, ROWS);
 
     getMatrixA(a1, ROWS);
-    showMatrix(a1, ROWS);
+    showMatrixA(a1, ROWS);
   
     addMatrix(a, ROWS, a1, ROWS, a2, ROWS);
-    showMatrix(a2, CROWS);
+    showMatrixA(a2, CROWS);
     
     getMatrixB(b, BROWS);
     showMatrixB(b, BROWS);
@@ -40,34 +39,29 @@ int main()
     showMatrixC(c, CROWS);
 
     system("pause");
+
     return 1;
 }
 
-bool getMatrixA(int(*arr)[COLS], int rows)
-{
-    for (int i = 0; i < rows; i++)
-    {
-        for (int j = 0; j < COLS; j++)
-        {
+bool getMatrixA(int(*arr)[COLS], int rows) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < COLS; j++) {
             *(*(arr + i) + j) = rand() % 10;
         }
     }
     return true;
 }
 
-bool getMatrixB(int(*arr)[BCOLS], int rows)
-{
-    for (int i = 0; i < rows; i++)
-    {
-        for (int j = 0; j < BCOLS; j++)
-        {
+bool getMatrixB(int(*arr)[BCOLS], int rows) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < BCOLS; j++) {
             *(*(arr + i) + j) = rand() % 10;
         }
     }
     return true;
 }
 
-bool showMatrix(int(*arr)[COLS], int rows) {
+bool showMatrixA(int(*arr)[COLS], int rows) {
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < COLS; j++) {
             printf("%d ", *(*(arr + i) + j));
@@ -86,7 +80,6 @@ bool showMatrixB(int(*arr)[BCOLS], int rows) {
         printf("\n");
     }
     printf("\n");
-
     return true;
 }
 
@@ -98,7 +91,6 @@ bool showMatrixC(int(*arr)[CCOLS], int rows) {
         printf("\n");
     }
     printf("\n");
-
     return true;
 }
 
@@ -112,13 +104,13 @@ bool addMatrix(int(*arr1)[COLS], int row1, int(*arr2)[COLS], int row2, int(*arr3
 }
 
 bool multiplyMatrix(int(*arr1)[COLS], int row1, int(*arr2)[BCOLS], int row2, int(*arr3)[CCOLS], int row3) {
-    for (int cRow = 0; cRow < row3; cRow++) { //arr3ÀÇ °¢ Ç×¸ñÀÇ °ªµéÀ» 0À¸·Î ÃÊ±âÈ­
+    for (int cRow = 0; cRow < row3; cRow++) { //arr3ì˜ ê° í•­ëª©ë“¤ì„ 0ìœ¼ë¡œ ì´ˆê¸°í™”
         for (int cCol = 0; cCol < CCOLS; cCol++) {
             *(*(arr3 + cRow) + cCol) = 0;
         }
     }
 
-    for (int cRow = 0; cRow < row3; cRow++) { //Çà·Ä °ö¼À ±¸Çö
+    for (int cRow = 0; cRow < row3; cRow++) { //í–‰ë ¬ ê³±ì…ˆ êµ¬í˜„
         for (int cCol = 0; cCol < CCOLS; cCol++) {
             for (int i = 0; i < COLS; i++) {
                 *(*(arr3 + cRow) + cCol) += *(*(arr1 + cRow) + i) * *(*(arr2 + i) + cCol);
