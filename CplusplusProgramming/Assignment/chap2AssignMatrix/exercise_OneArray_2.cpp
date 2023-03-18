@@ -20,7 +20,7 @@ C++ 2차 과제로 2차원 배열을 1차원 배열로 데이터 입력, add, mu
 //int getMatrix(int[], int);//난수 생성하여 처리 - pointer만 사용하여 구현
 bool showMatrix(int*, int, int);
 int * addMatrix(int *, int, int, int *, int, int);//a = a + b를 계산하고 a를 return
-int * getMatrix(int, int );
+int * getMatrix(int, int);
 int * multiplyMatrix(int *, int, int, int*, int, int,int *, int, int);//c = a * b를 계산하고 c를 return
 bool freeMatrix(int *, int, int);
 int main()
@@ -70,15 +70,9 @@ int main()
 int * getMatrix(int rows, int cols) { 
     int* arr = (int*)calloc(rows * cols, sizeof(int));
 
-    if (arr == NULL) {
-        //fail
-        printf("fail\n");
-    }
-    else {
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                *(arr + cols * i + j) = rand() % 10;//계산식 수정 필요
-            }
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            *(arr + cols * i + j) = rand() % 10;//계산식 수정 필요
         }
     }
     return arr;
@@ -106,12 +100,9 @@ int* addMatrix(int *arr1, int row1, int col1, int *arr2, int row2,  int col2) {/
 }
 
 int* multiplyMatrix(int *arr1, int row1, int col1, int *arr2, int row2, int col2, int *arr3, int row3, int col3) {//c = a * b를 계산하고 c를 return
-    for (int x = 0; x < row3; x++) { 
-        for (int y = 0; y < col3; y++) {
-            *(arr3 + col3*x + y) = 0;
-        }
+    for (int i = 0; i < (row3*col3); i++) {//arr3의 각 항목을 0으로 초기화
+        *(arr3 + i) = 0;
     }
-    //showMatrix(arr3, row3, col3);
 
     for (int x = 0; x < row3; x++) { //행렬 곱셈 구현
         for (int y = 0; y < col3; y++) {
@@ -125,14 +116,6 @@ int* multiplyMatrix(int *arr1, int row1, int col1, int *arr2, int row2, int col2
 }
 
 bool freeMatrix(int *arr, int row, int col) {
-    /*
-    for (int i = 0; i < row; i++) { //this maybe... free the memory redundantly.. so error is occured
-        for (int j = 0; j < col; j++) {
-            free(arr + col * i + j);
-        }
-    }
-    */
-
     free(arr);
 
     return true;
