@@ -25,23 +25,18 @@ int main()
     int c[CROWS][CCOLS];
 
     getMatrixA(a, ROWS);
-    printf("a\n");
     showMatrix(a, ROWS);
 
     getMatrixA(a1, ROWS);
-    printf("a1\n");
     showMatrix(a1, ROWS);
   
     addMatrix(a, ROWS, a1, ROWS, a2, ROWS);
-    printf("a2\n");
     showMatrix(a2, CROWS);
     
     getMatrixB(b, BROWS);
-    printf("b\n");
     showMatrixB(b, BROWS);
     
     multiplyMatrix(a, ROWS, b, BROWS, c, CROWS);
-    printf("c\n");
     showMatrixC(c, CROWS);
 
     system("pause");
