@@ -32,29 +32,21 @@ int main()
     a = getMatrix(AROWS, ACOLS); 
     a1 = getMatrix(AROWS, ACOLS); 
     a2 = getMatrix(AROWS, ACOLS);
-    printf("a\n");
     showMatrix(a, AROWS, ACOLS); 
-    printf("a1\n");
     showMatrix(a1, AROWS, ACOLS);
-    printf("a2\n");
     showMatrix(a2, AROWS, ACOLS);
     
     a3 = addMatrix(addMatrix(a, AROWS, ACOLS, a1, AROWS, ACOLS),AROWS, ACOLS, a2, AROWS, ACOLS);
-    printf("a3\n");
     showMatrix(a3, AROWS, ACOLS);
     
     b = getMatrix(BROWS, BCOLS);
-    printf("b\n");
     showMatrix(b, BROWS, BCOLS);
 
     c = getMatrix(CROWS, CCOLS);
-    printf("c\n");
     showMatrix(c, CROWS, CCOLS);
 
     d = multiplyMatrix(a, AROWS, ACOLS, b, BROWS, BCOLS, c, CROWS, CCOLS);
-    printf("c\n");
     showMatrix(c, CROWS, CCOLS);
-    printf("d\n");
     showMatrix(d, DROWS, DCOLS);
 
     freeMatrix(a, AROWS, ACOLS); 
