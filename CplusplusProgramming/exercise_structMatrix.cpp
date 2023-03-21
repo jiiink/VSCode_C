@@ -29,7 +29,7 @@ int showData(struct Matrix* a) {
 }
 void add(struct Matrix* a, struct Matrix* b, struct Matrix* c) {
 	if (a->rows != b->rows || a->cols != b->cols) {
-		printf("a, b�� incompatiable matrix\n");
+		printf("a, b are incompatiable matrix\n");
 		return;
 	}
 
@@ -37,7 +37,7 @@ void add(struct Matrix* a, struct Matrix* b, struct Matrix* c) {
 
 }
 //*
-void transpose(struct Matrix* a, struct Matrix* a1) {
+void transpose(struct Matrix* a, struct Matrix* a1) {//전치행렬
 
 
 }
@@ -46,11 +46,11 @@ bool multiply(struct Matrix* a, struct Matrix* b, struct Matrix* c) {
 		printf("incompatible matrices");
 		return false;
 	}
-	struct Matrix bXpose = { b->cols, b->rows };
+	struct Matrix bXpose = { b->cols, b->rows }; //b의 전치행렬
 	getData(&bXpose);
 	transpose(b, &bXpose);
 	showData(&bXpose);
-
+	//code
 
 	free(&bXpose);
 	return true;
@@ -63,16 +63,16 @@ int main()
 {
 	struct Matrix a = { 2,3,0 }, b = { 2,3,0 }, c = { 2,3,0 }, d = { 3,4,0 }, e = { 2,4,0 };
 	srand(time(NULL));
-	printf("matrix a[2][3]�� �Է�: \n");
+	printf("matrix a[2][3]의 입력: \n");
 	getData(&a);
 	showData(&a);
-	printf("matrix b[2][3]�� �Է�: \n");
+	printf("matrix b[2][3]의 입력: \n");
 	getData(&b);
 	showData(&b);
 	getData(&c);
 	add(&a, &b, &c);
 	showData(&c);
-	printf("matrix d[3][4]�� �Է�: \n");
+	printf("matrix d[3][4]의 입력: \n");
 	getData(&d);
 	showData(&d);
 	//*
