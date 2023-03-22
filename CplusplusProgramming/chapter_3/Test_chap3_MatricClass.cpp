@@ -8,8 +8,7 @@ class Matrix {
 public:
 	Matrix(int row, int col) { //constructor
 		rows = row;
-		cols = col;
-		
+		cols = col;	
 	}
 	//~Matrix() { delete[]Term; }
 	int GetData() {
@@ -22,10 +21,49 @@ public:
 		}
 		return 1;
 	}
-	Matrix Transpose();
-	int Display(); // 행렬 모양: A[rows][cols] 출력
-	Matrix Add(Matrix b);
-	Matrix Multiply(Matrix b);
+	Matrix Transpose() {
+		Matrix result(cols, rows);
+		result.Term = (int *)calloc(cols*rows, sizeof(int));
+
+		for (int i=0; i<rows; i++) {
+			for (int j=0; j<cols; j++) {
+				*(result.Term + rows*j + i) = *(Term + cols*i + j);
+			}
+		}
+		return result;
+	}
+	int Display() { // 행렬 모양: A[rows][cols] 출력
+		for (int i=0; i<rows; i++) {
+			for (int j=0; j<cols; j++) {
+				cout << *(Term + cols * i + j) << " ";
+			}
+			cout << endl;
+		}
+		return 1;
+	}
+	Matrix Add(Matrix b) {
+		//if (two matrix have same size?)
+		Matrix result(rows, cols);
+		result.Term = (int *)calloc(rows*cols, sizeof(int));
+		for (int i=0; i < rows; i++) {
+			for (int j=0; j < cols; j++) {
+				*(result.Term+cols*i+j) = *(Term+cols*i+j) + *(b.Term+cols*i+j);
+			}
+		}
+		return result;
+	}
+	Matrix Multiply(Matrix b) {
+		Matrix result(rows, b.cols);
+		result.Term = (int *)calloc(rows*result.cols, sizeof(int));
+		for (int i=0; i<rows; i++) {
+			for (int j=0; j<result.cols; j++) {
+				for (int x=0; x<cols; x++) {
+					*(result.Term + result.cols*i + j) += *(Term + cols*i + x) * *(b.Term + b.cols*x + j);
+				}
+			}
+		}
+		return result;
+	}
 
 private:
 	int rows, cols;
@@ -36,14 +74,18 @@ private:
 
 int main()
 {
-	Matrix a(2, 3); Matrix a1(2, 3); Matrix a2(2, 3);
+	Matrix a(2, 3); 
+	Matrix a1(2, 3); 
+	Matrix a2(2, 3);
 	Matrix b(3, 4);
 	Matrix c(2, 4);
 	srand(time(NULL));
 	cout << "matrix a[2][3]의 입력: " << endl;
 	a.GetData();
+	cout << "a" << endl;
 	a.Display();
 	//cout << a.rows;//can't access private //in C  printf("%d", a.rows); // cout : 출력객체 
+	
 	cout << "matrix a1[2][3]의 입력: " << endl;
 	a1.GetData();
 	a1.Display();
@@ -64,7 +106,7 @@ int main()
 	cout << "Multiply of Matrix a,b" << endl;
 	c = a.Multiply(b);
 	c.Display();
-
+	
 	system("pause");
 	return 0;
 }
