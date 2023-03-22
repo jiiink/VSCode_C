@@ -10,7 +10,7 @@ public:
 		rows = row;
 		cols = col;	
 	}
-	//~Matrix() { delete[]Term; }
+	//~Matrix() { delete[]Term; } //destructor
 	int GetData() {
 		Term = (int *)calloc(rows*cols, sizeof(int));
 
@@ -97,7 +97,7 @@ int main()
 	cout << "matrix b[3][4]ÀÇ ÀÔ·Â: " << endl;
 	b.GetData();
 	b.Display();
-
+	
 	Matrix d(4, 3);
 	d = b.Transpose();
 	cout << "Transpose() of Matrix b" << endl;
