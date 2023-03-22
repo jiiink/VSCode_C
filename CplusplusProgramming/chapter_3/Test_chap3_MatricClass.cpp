@@ -6,9 +6,22 @@ using namespace std;
 // 보통 행렬에 대하여add, sub, mult, transpose 구현하는 코딩
 class Matrix {
 public:
-	Matrix(int row, int col);
+	Matrix(int row, int col) { //constructor
+		rows = row;
+		cols = col;
+		
+	}
 	//~Matrix() { delete[]Term; }
-	int GetData();
+	int GetData() {
+		Term = (int *)calloc(rows*cols, sizeof(int));
+
+		for (int i=0; i<rows; i++) {
+			for (int j=0; j<cols; j++) {
+				*(Term + cols * i + j) = rand() % 10;
+			}
+		}
+		return 1;
+	}
 	Matrix Transpose();
 	int Display(); // 행렬 모양: A[rows][cols] 출력
 	Matrix Add(Matrix b);
@@ -30,7 +43,7 @@ int main()
 	cout << "matrix a[2][3]의 입력: " << endl;
 	a.GetData();
 	a.Display();
-	cout<<a.rows;//in C  printf("%d", a.rows); // cout : 출력객체 
+	//cout << a.rows;//can't access private //in C  printf("%d", a.rows); // cout : 출력객체 
 	cout << "matrix a1[2][3]의 입력: " << endl;
 	a1.GetData();
 	a1.Display();
