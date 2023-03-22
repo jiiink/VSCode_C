@@ -27,7 +27,7 @@ public:
 
 		for (int i=0; i<rows; i++) {
 			for (int j=0; j<cols; j++) {
-				*(result.Term + rows*j + i) = *(Term + cols*i + j);
+				*(result.Term + result.cols*j + i) = *(Term + cols*i + j);
 			}
 		}
 		return result;
@@ -55,7 +55,7 @@ public:
 	Matrix Multiply(Matrix b) {
 		Matrix result(rows, b.cols);
 		result.Term = (int *)calloc(rows*result.cols, sizeof(int));
-		for (int i=0; i<rows; i++) {
+		for (int i=0; i<result.rows; i++) {
 			for (int j=0; j<result.cols; j++) {
 				for (int x=0; x<cols; x++) {
 					*(result.Term + result.cols*i + j) += *(Term + cols*i + x) * *(b.Term + b.cols*x + j);
