@@ -19,6 +19,7 @@ void main(void){
 	printf("mid x값 출력 : %d\n", mid->x);//wrong value 출력
 	printf("mid y값 출력 : %d\n", mid->y);//wrong value 출력
 	printf("mid value값 출력 : %f\n\n", mid->value);//wrong value 출력
+	//free(mid);
 	system("pause");
 }
 
@@ -32,3 +33,19 @@ SAMPLE *merge(SAMPLE *f, SAMPLE *s){   //return by pointer
 	printf("mid value값 출력 : %f\n", temp.value);
 	return &temp;
 }
+/* solution
+SAMPLE *merge(SAMPLE *f, SAMPLE *s) {
+	SAMPLE *ptemp = (SAMPLE *)malloc(sizeof(SAMPLE));
+	
+	ptemp->x = f->x + s->x;
+	ptemp->y = f->y + s->y;
+	ptemp->value = f->value + s->value;
+
+	printf("print values of mid\n");
+	printf("x of mid : %d\n", ptemp->x);
+	printf("y of mid : %d\n", ptemp->y);
+	printf("value of mid : %f\n", ptemp->value);
+
+	return ptemp;
+}
+*/
