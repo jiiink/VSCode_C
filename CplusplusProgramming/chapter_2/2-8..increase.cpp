@@ -7,7 +7,7 @@
 void increase(int *a, int size);
 //void increase(int a[], int size);
 void increaseArrayPtr(int* [], int);
-void main(void)
+int main()
 {
 	int a1[COL] = { 1,2,3,4,5 };
 	int *end1;
@@ -56,6 +56,7 @@ void main(void)
 	printf("\n");
 	//*/
 	system("pause");
+	return 0;
 }
 void increaseArrayPtr(int* x[], int n)
 {

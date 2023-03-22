@@ -1,8 +1,8 @@
-// matrixMultiplication.cpp - 2ì°¨ì› í–‰ë ¬ì„ structìœ¼ë¡œ êµ¬í˜„  
+// matrixMultiplication.cpp - 2Â÷¿ø Çà·ÄÀ» structÀ¸·Î ±¸Çö
 #include <stdio.h>
 #include <stdlib.h>
 #include "time.h"
-// ë³´í†µ í–‰ë ¬ì— ëŒ€í•˜ì—¬add, sub, mult, transpose êµ¬í˜„í•˜ëŠ” ì½”ë”©
+// º¸Åë Çà·Ä¿¡ ´ëÇÏ¿©add, sub, mult, transpose ±¸ÇöÇÏ´Â ÄÚµù
 struct Matrix {
 	int rows;
 	int cols;
@@ -10,7 +10,7 @@ struct Matrix {
 };
 
 int getData(struct Matrix* a);
-int showData(struct Matrix* a);// í–‰ë ¬ ëª¨ì–‘: A[rows][cols] ì¶œë ¥
+int showData(struct Matrix* a);// Çà·Ä ¸ğ¾ç: A[rows][cols] Ãâ·Â
 void add(struct Matrix*, struct Matrix*, struct Matrix*);
 void transpose(struct Matrix*, struct Matrix*);
 bool multiply(struct Matrix*, struct Matrix*, struct Matrix*);
@@ -37,7 +37,7 @@ void add(struct Matrix* a, struct Matrix* b, struct Matrix* c) {
 
 }
 //*
-void transpose(struct Matrix* a, struct Matrix* a1) {//ì „ì¹˜í–‰ë ¬
+void transpose(struct Matrix* a, struct Matrix* a1) {//ÀüÄ¡Çà·Ä
 
 
 }
@@ -46,7 +46,7 @@ bool multiply(struct Matrix* a, struct Matrix* b, struct Matrix* c) {
 		printf("incompatible matrices");
 		return false;
 	}
-	struct Matrix bXpose = { b->cols, b->rows }; //bì˜ ì „ì¹˜í–‰ë ¬
+	struct Matrix bXpose = { b->cols, b->rows }; //bÀÇ ÀüÄ¡Çà·Ä
 	getData(&bXpose);
 	transpose(b, &bXpose);
 	showData(&bXpose);
@@ -63,16 +63,16 @@ int main()
 {
 	struct Matrix a = { 2,3,0 }, b = { 2,3,0 }, c = { 2,3,0 }, d = { 3,4,0 }, e = { 2,4,0 };
 	srand(time(NULL));
-	printf("matrix a[2][3]ì˜ ì…ë ¥: \n");
+	printf("matrix a[2][3]ÀÇ ÀÔ·Â: \n");
 	getData(&a);
 	showData(&a);
-	printf("matrix b[2][3]ì˜ ì…ë ¥: \n");
+	printf("matrix b[2][3]ÀÇ ÀÔ·Â: \n");
 	getData(&b);
 	showData(&b);
 	getData(&c);
 	add(&a, &b, &c);
 	showData(&c);
-	printf("matrix d[3][4]ì˜ ì…ë ¥: \n");
+	printf("matrix d[3][4]ÀÇ ÀÔ·Â: \n");
 	getData(&d);
 	showData(&d);
 	//*
