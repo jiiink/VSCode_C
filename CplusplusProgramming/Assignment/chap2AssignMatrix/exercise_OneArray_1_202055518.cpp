@@ -1,5 +1,5 @@
-//2차원 배열에 대한 행렬 더하기
-//C++ 1차 과제로 배포 
+//Matrix addition in 2 dimential
+//C++ 1st assignment
 #include <stdio.h>
 #include <stdlib.h>
 #include "time.h"
@@ -9,7 +9,7 @@
 #define BCOLS 5
 #define CROWS 3
 #define CCOLS 5
-//int getMatrix(int[][COLS], int);//난수 생성하여 처리 - pointer만 사용하여 구현
+//int getMatrix(int[][COLS], int);//take with random - only use pointer
 bool showMatrixA(int(*)[COLS], int);
 bool showMatrixB(int(*)[BCOLS], int);
 bool showMatrixC(int(*)[CCOLS], int);
@@ -104,13 +104,13 @@ bool addMatrix(int(*arr1)[COLS], int row1, int(*arr2)[COLS], int row2, int(*arr3
 }
 
 bool multiplyMatrix(int(*arr1)[COLS], int row1, int(*arr2)[BCOLS], int row2, int(*arr3)[CCOLS], int row3) {
-    for (int cRow = 0; cRow < row3; cRow++) { //arr3의 각 항목들을 0으로 초기화
+    for (int cRow = 0; cRow < row3; cRow++) { //initialize all item of arr3 to 0
         for (int cCol = 0; cCol < CCOLS; cCol++) {
             *(*(arr3 + cRow) + cCol) = 0;
         }
     }
 
-    for (int cRow = 0; cRow < row3; cRow++) { //행렬 곱셈 구현
+    for (int cRow = 0; cRow < row3; cRow++) { //Matrix multiply
         for (int cCol = 0; cCol < CCOLS; cCol++) {
             for (int i = 0; i < COLS; i++) {
                 *(*(arr3 + cRow) + cCol) += *(*(arr1 + cRow) + i) * *(*(arr2 + i) + cCol);
