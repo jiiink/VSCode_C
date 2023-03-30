@@ -1,5 +1,7 @@
 //4-2. const.cpp   4.2.2 상수 pointer 선언 - 상수 pointer를 함수로 전달할 때 많이 사용됨
 // 아래 소스코드는 상수 pointer를 테스트하기 위한 용도의 소스 코드
+
+//remove the comment, and check why error occured
 #include<iostream>
 using namespace std;
 void square(const int* const);
@@ -16,10 +18,10 @@ int main(void){
     const int* pc_b = &i2;
     //(*pc_a)++;
     int* const cp_a = &i3; //constant pointer
-    int* const cp_b = &i3;
+    int* const cp_b = &i3; //must initiallized
     (*cp_a)++;
     const int* const cpc_a = &i4; //constant pointer-to-const
-    const int* const cpc_b = &i4;
+    const int* const cpc_b = &i4; 
     
     cout << "초기 값" << endl;
     cout << "*pi : " << *p1 << " \t" << "*pc_a : " << *pc_a << "\t";
