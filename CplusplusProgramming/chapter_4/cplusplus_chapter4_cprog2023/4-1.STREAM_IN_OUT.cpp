@@ -1,5 +1,6 @@
 //4-1. STREAM_IN_OUT.cpp  4.1 변수 scope와 표준 입출력
 #include <iostream>
+#include <string.h>
 using namespace std;
 
 class Person{

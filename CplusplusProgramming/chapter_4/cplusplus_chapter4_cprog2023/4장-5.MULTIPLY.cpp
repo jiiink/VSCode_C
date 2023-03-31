@@ -27,7 +27,7 @@ int main () {
 	int* p1, ** p2;
 	p1 = (int*)data;//array "width(ROWS) 정보가 없음
 	p2 = &p1;
-	//displayArray(p2);//run-time에러가 발생하는 것을 확인 
+	//displayArray(p2);//run-time에러가 발생하는 것을 확인 why
 	//*/
 
 	///*

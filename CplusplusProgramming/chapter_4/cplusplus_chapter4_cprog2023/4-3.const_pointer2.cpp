@@ -14,7 +14,7 @@ void main(){
     int i=10;
     int *const j = &i;
     square1(&i);
-    square(j);
+    square(j); // `int* const` is passed to the `const int* const` by parameter 
 	cout <<"i = "<<i<<", j = "<<*j<<endl;
 	//*/
     //주석 2번
@@ -23,6 +23,7 @@ void main(){
     const int *const width = &k;
     square(width);
     //square1(width);  //const int * 형식의 인수가 int * 형식의 매개변수와 호환되지 않는다
+	//why this doesn't work?
     //*/
     //주석 3번
     
