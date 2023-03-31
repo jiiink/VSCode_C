@@ -6,7 +6,7 @@
 using namespace std;
 const int& maxInt(const int&, const int& b);
 
-void main(){
+int main(){
 	int i = 12, j = 13, n = 14;
    const int &k = maxInt(i, j);
    const int &m = maxInt(maxInt(i, n), j);
@@ -21,6 +21,7 @@ void main(){
    cout << endl << "d3 = " << d3 << endl;
    cout << endl << "d4 = " << d4 << endl;
    system("pause");
+   return 1;
 }
 const int& maxInt(const int &a, const int &b){      
 	//int *maxValue = new int;//heap ¿µ¿ª

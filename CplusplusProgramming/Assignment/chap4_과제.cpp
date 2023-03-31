@@ -1,22 +1,47 @@
 #include <iostream>
-//복소수에 대한 사칙연산이 가능하도록 구현한다. main() 함수는 수정하면 안된다
+//복소수에 대한 사칙연산이 가능하도록 구현한다. main() 함수는 수정하면 안된다 구글링해보자~
 using namespace std;
 class ComplexNumber {
 private:
-	float real;
-	float imaginary;
+	float real; //실수
+	float imaginary; //허수
 public:
+	//코드
+	
+	ComplexNumber(float real, float imaginary): real(real), imaginary(imaginary) { //instead of this->real = real; 
+		//this->real = real;
+		//this->imaginary = imaginary;
+	}
+	//ComplexNumber& operator+(const ComplexNumber&);
+	friend ComplexNumber& operator+(const ComplexNumber&, const ComplexNumber&);
+	ComplexNumber add(const ComplexNumber);
 
 	friend ostream& operator<<(ostream& stream, const ComplexNumber& p);
+
 	
 };
+ComplexNumber& operator+(const ComplexNumber&a, const ComplexNumber&b) {
+	a.real += b.real;
+	a.imaginary += b.imaginary;
+
+	return a;
+	//return *a;
+	//return &a;
+}
 
 ostream& operator<<(ostream& stream, const ComplexNumber& p) {
 	stream << p.real << " + " << p.imaginary << "i";
 	return stream;
 }
 
-int main(void) {
+//ComplexNumber add(const ComplexNumber &b) {} 이랬을 때 안 되는 거 확인
+ComplexNumber& ComplexNumber::add(const ComplexNumber &b) {
+	ComplexNumber cn;
+
+	return cn;                        
+}
+
+int main(void) {//main은 수정할 것 없음
 	while (1)
 	{
 		ComplexNumber a(1, 1), b(2, 2), c(3, 3), d(4, 4);
@@ -54,7 +79,7 @@ int main(void) {
 		case 5:
 			cout << endl << "cascading 덧셈 d = a + b + c" << endl;
 			cout << endl << "a = " << a << ", b = " << b << ", c = " << c << endl;
-			d = a + b + c;
+			d = a + b + c;//operator_overloading
 			cout << "d = " << d << endl;
 			break;
 		default:

@@ -9,9 +9,11 @@ int main()
 {
    const int a = 100;
    const int *ptr = &a;
+   //increase(ptr); 안 됨.
    //*ptr += 1;
    //a++;
    int *q = const_cast <int*> (ptr);//const_cast의 목적은 무엇인가?
+   //int *q = ptr; 은 안 됨. 위 명령이 됨.
    *q += 1;
    cout << "a = " << a << endl;
    cout<<"*q = "<<*q << endl<< "increase(q) = " << increase(q)<<endl;
