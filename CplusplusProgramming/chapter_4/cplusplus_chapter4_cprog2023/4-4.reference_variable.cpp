@@ -6,10 +6,10 @@ void update(int* const& p) {//참조 변수로 받는다
     *p = 10;
     //p = nullptr;
 }
-void main(){      
+int main(){      
     int a[COLS] = {10, 11, 12, 13, 14};
-    int *pa[COLS];
-    int (*ap)[COLS] = &a; 
+    int *pa[COLS]; //Array_of_pointer
+    int (*ap)[COLS] = &a; //pointer_to_array
 
     cout<<"<<ap 출력>>"<<endl;
     for(int i=0; i<COLS; i++){
@@ -44,4 +44,6 @@ void main(){
     int* const p = a;
     update(p);
 	system("pause");
+
+    return 1;
 }

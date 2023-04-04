@@ -9,7 +9,7 @@ private:
 	float real;
 	float image; 
 public:
-	Cascade() { real = 0.0; image = 0.0; }
+	Cascade() { real = 0.0; image = 0.0; } //default
 	Cascade(float r, float i) : real(r), image(i) { }
 	void OutCascade() const { cout<<real<<" + "<<image<<"i"<<endl; }
 	Cascade& operator +(const Cascade &T);
@@ -17,7 +17,7 @@ public:
 };
 
 
-//*
+/*
 Cascade& Cascade::operator+(const Cascade &T){
 	this->image = this->image + T.image;
 	this->real = this->real + T.real; 
@@ -26,20 +26,20 @@ Cascade& Cascade::operator+(const Cascade &T){
 	this->OutCascade();
 	return *this;
 }
-//*/
-/*
+*/
+
 // 다음 코드는 고의 오류가 있는 코드임 - 실행하여 값이 wrong인 것을 확인
 
-    Cascade& Cascade::operator +(const Cascade& T) {
+Cascade& Cascade::operator +(const Cascade& T) {
 	Cascade C;
 	C.image = image + T.image;
 	C.real = real + T.real;
 	cout << "operator+(const CasCade&):: "; C.OutCascade();
 	return C;//return local variable?
 }
-*/
 
-void main(void){
+
+int main(void){
 	Cascade C1(1.1,2.2);
 	cout << "C1 = "; C1.OutCascade();
 	Cascade C2(3.3,4.4);
@@ -51,4 +51,5 @@ void main(void){
 	C4 = C1 + C2 + C3;
 	cout << "C4 = "; C4.OutCascade();
 	system("pause");
+	return 1;
 }

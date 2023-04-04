@@ -4,14 +4,14 @@
 using namespace std;
 
 class Person{
-	/*
+	
     ostream& operator<<(char); 
     ostream& operator<<(short);
     ostream& operator<<(int);
     ostream& operator<<(long);
     ostream& operator<<(float);
     ostream& operator<<(double);
-   */
+   
 	friend ostream& operator<<(ostream& stream, const Person &p);
 private:
     int idNum;
@@ -48,11 +48,12 @@ ostream& operator<<(ostream& stream, const Person &p){
     return stream;
 }
 //*/
-void main() {
+int main() {
     Person p(941111, 20, "hong", "Busan", "CPP");//2022 version에서 에러 발생시 > 상단의 프로젝트 > 속성>C/C++.준수모드>아니오선택
     cout << "저의" << p << "입니다." << endl << endl; //error - 주석1을 해제하지 않으면 오류 발생을 확인
 
     Person s(981212, 30, "kim", "Masan", "Java");
     cout << "저의" << s << "입니다." << endl << endl;
     system("pause");
+    return 1;
 }

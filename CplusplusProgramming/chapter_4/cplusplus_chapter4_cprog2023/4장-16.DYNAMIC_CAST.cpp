@@ -19,7 +19,7 @@ public:
         cout << "Child_2 is ok" << endl;
     }
 };
-void main(){
+int main(){
     Parent *p_1 = new Child_1;
     Parent *p_2 = new Parent;
 

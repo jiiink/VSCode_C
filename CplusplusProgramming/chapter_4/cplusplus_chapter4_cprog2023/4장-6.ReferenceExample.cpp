@@ -5,7 +5,7 @@ void swap(int value_a, int value_b); //call by value
 void swap(int *pointer_a, int *pointer_b); //call by pointer
 void swap_ref(int &reference_a, int &reference_b); //call by reference
 //void swap(int& reference_a, int& reference_b); // 오류 발생함
-void main(){
+int main(){
     int num_1 = 10, num_2 = 20;
     cout << "call by value" << endl;
     swap (num_1, num_2);
@@ -24,6 +24,7 @@ void main(){
 		<< ", num_2 = "<< num_2<<endl;
 
 	system("pause");
+    return 1;
 }
 
 

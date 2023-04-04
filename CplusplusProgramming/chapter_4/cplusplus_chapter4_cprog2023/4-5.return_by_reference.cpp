@@ -4,9 +4,10 @@ using namespace std;
 
 int addThree(int n);
 int& addThreeReference(int &n);
-int& sum(int a, int b);
+//int& sum(int a, int b);
 int& maxInt(int &a, int &b);
-void main(){
+
+int main(){
     //1번 주석
    //*
     cout << "pass by value & return by value" << endl;
@@ -34,14 +35,14 @@ void main(){
 
     //3번 주석
    //*
-    cout << "pass by value & return by reference" << endl;
-    int c = 10, d = 15, e = 17;
-    cout <<"sum():: &c : "<<&c<<", c : "<<c<<", &d : "<<&d
-		<<", d : "<<d<<endl;
-    int &k = sum(sum(c, d), e);
-    cout<<"sum():: &c : "<<&c<<", c : "<<c<<", &d : "<<&d
-		<<", d : "<<d<<", &k : "<<&k<<", k : "<<k<<endl;
-    cout << endl;
+    // cout << "pass by value & return by reference" << endl;
+    // int c = 10, d = 15, e = 17;
+    // cout <<"sum():: &c : "<<&c<<", c : "<<c<<", &d : "<<&d
+		// <<", d : "<<d<<endl;
+    // int &k = sum(sum(c, d), e);
+    // cout<<"sum():: &c : "<<&c<<", c : "<<c<<", &d : "<<&d
+		// <<", d : "<<d<<", &k : "<<&k<<", k : "<<k<<endl;
+    // cout << endl;
     //*/
 
     //4번 주석
@@ -56,6 +57,7 @@ void main(){
     cout << endl;
     //*/
     system("pause");
+    return 1;
 }
 
 int addThree(int i){
@@ -70,12 +72,12 @@ int& addThreeReference(int &v){
     return v;
 }
 
-int& sum(int a, int b){;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    int tmp;
-    tmp = a + b;
-    cout<<"Inside sum():: &a  : "<<&a<<", &b : "<<&b<<",&tmp : "<<&tmp<<",tmp : "<<tmp<<endl;
-    return tmp;
-}
+// int& sum(int a, int b){
+//     int tmp;
+//     tmp = a + b;
+//     cout<<"Inside sum():: &a  : "<<&a<<", &b : "<<&b<<",&tmp : "<<&tmp<<",tmp : "<<tmp<<endl;
+//     return tmp; //tmp will be removed when return
+// }
 int& maxInt(int &a, int &b){ //return by reference시에 local variable의 반환 문제를 공부
     //int *max = new int[1]; //free을 못함
     //int *max; //오류 발생

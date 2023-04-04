@@ -5,7 +5,7 @@ using namespace std;
 int& value(int*, int n);
 double* maxDouble(double* , double* );
 
-void main () {
+int main () {
 	int a[] = {10, 20, 30, 40, 50};
 	int n = 0;
 	//n++ = 10;//lvalue가 아니다
@@ -22,6 +22,7 @@ void main () {
 	//double k = maxDouble(&i, &j);//return 값이 double*이므로 double에 치환하므로 오류
 	cout << endl << "k = " << *k << endl;
 	system("pause");
+	return 1;
 }
 
 int& value(int *a, int n)
