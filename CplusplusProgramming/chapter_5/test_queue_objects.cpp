@@ -11,10 +11,10 @@ using namespace std;
 
 class Person {
     friend class Queue;
-    char* pid;
-    //string pid;
-    char* pname;
-    //string pname;
+    //char* pid;
+    string pid;
+    //char* pname;
+    string pname;
     int age;
 public:
 

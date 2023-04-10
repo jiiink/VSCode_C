@@ -7,29 +7,23 @@ private:
 	float real; //실수
 	float imaginary; //허수
 public:
-	ComplexNumber(float real, float imaginary): real(real), imaginary(imaginary) { //instead of this->real = real; 
-		//this->real = real;
-		//this->imaginary = imaginary;
-	}
-	ComplexNumber& operator+(const ComplexNumber&);
-	friend ComplexNumber operator+(const ComplexNumber&, const ComplexNumber&); //operator_overloading
+	ComplexNumber(float real, float imaginary): real(real), imaginary(imaginary) {}
+	ComplexNumber() { real = 0; imaginary = 0; }
+	friend ComplexNumber operator+(const ComplexNumber&, const ComplexNumber&);
 	friend ostream& operator<<(ostream& stream, const ComplexNumber& p);
 	ComplexNumber add(const ComplexNumber&);
 	ComplexNumber subtract(const ComplexNumber&);
 	ComplexNumber multiply(const ComplexNumber&);
 	ComplexNumber divide(const ComplexNumber&);
-
-	
 };
-ComplexNumber operator+(const ComplexNumber& a, const ComplexNumber& b) { //operator_overloading
-	ComplexNumber cn(0, 0);
-	
-	cn.real = a.real + b.real;
-	cn.imaginary = a.imaginary + b.imaginary;
 
-	return cn;
-	//return *a;
-	//return &a;
+ComplexNumber operator+(const ComplexNumber& a, const ComplexNumber& b) {
+	ComplexNumber res;
+	
+	res.real = a.real + b.real;
+	res.imaginary = a.imaginary + b.imaginary;
+
+	return res;
 }
 
 ostream& operator<<(ostream& stream, const ComplexNumber& p) {
@@ -41,54 +35,48 @@ ostream& operator<<(ostream& stream, const ComplexNumber& p) {
 	return stream;
 }
 
-//ComplexNumber add(const ComplexNumber &b) {} //이랬을 때 안 되는 거 확인
-ComplexNumber ComplexNumber::add(const ComplexNumber &b) { //how to return class?
-	ComplexNumber cn(0, 0);
+ComplexNumber ComplexNumber::add(const ComplexNumber &object) {
+	ComplexNumber result;
 
-	cn.real = this->real + b.real;
-	cn.imaginary = this->imaginary + b.imaginary;
-
-	return cn;                        
-}
-
-ComplexNumber ComplexNumber::subtract(const ComplexNumber& b) {
-	ComplexNumber cn(0, 0);
-
-	cn.real = this->real - b.real;
-	cn.imaginary = this->imaginary - b.imaginary;
-
-	return cn;
-}
-
-ComplexNumber ComplexNumber::multiply(const ComplexNumber& b) {
-	ComplexNumber cn(0, 0);
-
-	cn.real = this->real * b.real - (this->imaginary * b.imaginary);
-	cn.imaginary = (this->real * b.imaginary) + (this->imaginary * b.real);
-
-	return cn;
-}
-
-ComplexNumber ComplexNumber::divide(const ComplexNumber& b) {
-	ComplexNumber cn(0, 0);
-	ComplexNumber b_(b.real, -b.imaginary);
-	ComplexNumber son(0, 0);
-	ComplexNumber result(0, 0);
-
-	float mother = b.real * b.real - (b.imaginary * -b.imaginary);
-	son = this->multiply(b_);
-	//cout << "son : " << son << endl;
-
-	result.real = son.real / mother;
-	result.imaginary = son.imaginary / mother;
-
-	// cn.real = this->real * b.real - (this->imaginary * b.imaginary);
-	// cn.imaginary = (this->real * b.imaginary) + (this->imaginary * b.real);
+	result.real = this->real + object.real;
+	result.imaginary = this->imaginary + object.imaginary;
 
 	return result;
 }
 
-int main(void) {//main은 수정할 것 없음
+ComplexNumber ComplexNumber::subtract(const ComplexNumber& object) {
+	ComplexNumber result;
+
+	result.real = this->real - object.real;
+	result.imaginary = this->imaginary - object.imaginary;
+
+	return result;
+}
+
+ComplexNumber ComplexNumber::multiply(const ComplexNumber& object) {
+	ComplexNumber result;
+
+	result.real = this->real * object.real - (this->imaginary * object.imaginary);
+	result.imaginary = (this->real * object.imaginary) + (this->imaginary * object.real);
+
+	return result;
+}
+
+ComplexNumber ComplexNumber::divide(const ComplexNumber& object) {
+	ComplexNumber object__(object.real, -object.imaginary);
+	ComplexNumber denominator;
+	ComplexNumber result;
+
+	float numerator = object.real * object.real - (object.imaginary * -object.imaginary);
+	denominator = this->multiply(object__);
+
+	result.real = denominator.real / numerator;
+	result.imaginary = denominator.imaginary / numerator;
+
+	return result;
+}
+
+int main(void) {
 	while (1)
 	{
 		ComplexNumber a(1, 1), b(2, 2), c(3, 3), d(4, 4);
@@ -105,7 +93,6 @@ int main(void) {//main은 수정할 것 없음
 		case 2:
 			cout << endl << "뺄셈 d = a - b - c" << endl;
 			cout << endl << "a = " << a << ", b = " << b << ", c = " << c << endl;
-			// d = a.subtract(b.subtract(c));
 			d = (a.subtract(b)).subtract(c);
 			cout << "d = " << d << endl;
 			break;
@@ -115,20 +102,17 @@ int main(void) {//main은 수정할 것 없음
 			cout << endl << "a = " << a << ", b = " << b << ", c = " << c << endl;
 			d = a.multiply(b.multiply(c));
 			cout << "d = " << d << endl;
-			//e = a - b - c - d;
 			break;
 		case 4:
 			cout << endl << "나눗셈 d = a / b / c" << endl;
 			cout << endl << "a = " << a << ", b = " << b << ", c = " << c << endl;
-			// d = a.divide(b.divide(c));
-			d = a.divide(b);
+			d = (a.divide(b)).divide(c);
 			cout << "d = " << d << endl;
-			// cout << a;
 			break;
 		case 5:
 			cout << endl << "cascading 덧셈 d = a + b + c" << endl;
 			cout << endl << "a = " << a << ", b = " << b << ", c = " << c << endl;
-			d = a + b + c;//operator_overloading
+			d = a + b + c;
 			cout << "d = " << d << endl;
 			break;
 		default:
