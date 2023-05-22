@@ -5,7 +5,7 @@ class Letters {
 private:
     // private 데이터:
     char ch;//private data member can be accessed within member functions
-    static int num;
+    static int num; //객체가 없어져도 data 영역에서 남아있음
 public:
     Letters (char c);
     ~Letters ();
