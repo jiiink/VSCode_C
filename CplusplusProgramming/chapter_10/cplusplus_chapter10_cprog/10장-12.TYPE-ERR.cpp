@@ -33,7 +33,7 @@ public:
     }
     //*/
 };
-void main (){
+int main (){
     // 두 개의 객체들을 만든다.
     OrdSingle <int> os1;
 	Number n1(4);
@@ -45,5 +45,7 @@ void main (){
         printf("\t os2 = %d\n",os1);
     if(os2 > 5)
         printf("\tos2 = %d\n",os2);
+
 	system("pause");
+    return 0;
 }

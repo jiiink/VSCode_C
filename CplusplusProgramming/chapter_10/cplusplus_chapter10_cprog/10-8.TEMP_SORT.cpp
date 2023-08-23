@@ -34,11 +34,11 @@ void print (T *ele, int num){
     cout << endl << endl;
 }
 
-void main (){
+int main (){
     //다른 데이터 타입의 배열을 선언해보고 sort()와 print()를 실행시켜보자.
     int arr1[10] = {5, 6, 1, 7, 9, 3, 2, 0, 4, 8};
     float arr2[10] = {4.1, 1.2, 5.0, 6.3, 2.3, 0.4, 7.7, 8.5, 3.1, 9.0};
-    char* name[10] = { "Kim" };
+    const char* name[10] = { "Kim", "Lee" };
     //Person p[10];
     cout << "sort() 호출 전 " << endl;
     print(arr1, 10);
@@ -57,4 +57,5 @@ void main (){
     sort(n, 10);
     */
     system("pause");
+    return 1;
 }

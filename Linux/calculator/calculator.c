@@ -10,15 +10,15 @@ int main(char* argh, char* argc, char* argv)
 	int select;
 	double result;
 	//atoi();
-	select = atoi(argh);
-	val1 = atof(argc);
-	val2 = atof(argv);
+	//select = atoi(argh);
+	//val1 = atof(argc);
+	//val2 = atof(argv);
 	while(1)
 	{
-		//printf("Enter val1 and val2:");
-		//scanf("%lf %lf", &val1, &val2);
-		//printf("Enter calculator mode(1:Add, 2:Minus, 3:Multi, 4:Divide, 5:Exit):");
-		//scanf("%d", &select);
+		printf("Enter val1 and val2:");
+		scanf("%lf %lf", &val1, &val2);
+		printf("Enter calculator mode(1:Add, 2:Minus, 3:Multi, 4:Divide, 5:Exit):");
+		scanf("%d", &select);
 
 		switch(select)
 		{
